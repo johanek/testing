@@ -20,7 +20,6 @@ describe 'Firewall' do
       a.add(:host => "johan.org.uk")
       c = a.status
       c.should > b
-      #a.flush
     end
   end
   
