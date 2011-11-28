@@ -11,6 +11,7 @@ module Iptables
       cmd = cmd+" --dport #{options[:port]}" if options[:port]
       cmd = cmd+" -d #{options[:host]}" if options[:host]
       cmd = cmd+" -j DROP"
+      puts cmd
       system(cmd)
     end
     
