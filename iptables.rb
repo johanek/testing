@@ -15,6 +15,8 @@ module Iptables
     end
     
     def flush
+      cmd = "iptables -F"
+      system(cmd)
     end
   end
 end

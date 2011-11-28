@@ -24,7 +24,13 @@ describe 'Firewall' do
   end
   
   describe '.flush' do
-    
+    it "removes all rules" do
+      a = Firewall.new
+      b = a.status
+      a.flush
+      c = a.status
+      c.should == 0
+    end
   end
   
 end
