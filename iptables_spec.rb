@@ -1,12 +1,14 @@
 #!/usr/bin/env ruby
 
 require 'iptables'
+include Iptables
 
-describe 'Iptables' do
+describe 'Firewall' do
   
   describe '.status' do
     it "return a number" do
-      num = Iptables.status
+      a = Firewall.new
+      num = a.status
       num.is_a.should == "number"
     end
   end

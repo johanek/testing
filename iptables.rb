@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
 module Iptables
-  class Iptables
-    def status
+  class Firewall
+    def tablestatus
+      puts 1
     end
     def add
     end
