@@ -3,7 +3,7 @@
 module Iptables
   class Firewall
     def status
-      `iptables -nvL | sed "s/\s*//g" | egrep ^[0-9] | wc -l`
+      `iptables -nvL | sed "s/\s*//g" | egrep ^[0-9] | wc -l`.to_i
     end
     def add
     end
