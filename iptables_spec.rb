@@ -27,10 +27,9 @@ describe 'Firewall' do
   describe '.flush' do
     it "removes all rules" do
       a = Firewall.new
-      b = a.status
       a.flush
-      c = a.status
-      c.should == 0
+      b = a.status
+      b.should == 0
     end
   end
   
