@@ -17,10 +17,10 @@ describe 'Firewall' do
     it "create a new rule" do
       a = Firewall.new
       b = a.status
-      a.add(:host => "johan.org.uk", :port => "2222")
+      a.add(:host => "johan.org.uk")
       c = a.status
       c.should > b
-      a.flush
+      #a.flush
     end
   end
   
