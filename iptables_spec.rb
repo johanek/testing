@@ -17,7 +17,7 @@ describe 'Firewall' do
     it "create a new rule" do
       a = Firewall.new
       b = a.status
-      a.add(:host => "johan.org.uk")
+      a.add(:host => "google.com")
       c = a.status
       c.should > b
     end
