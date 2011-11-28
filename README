@@ -1,0 +1,4 @@
+= Examples of automated testing for sysadmin
+
+== IPTABLES
+Simple iptables methods for testing loss of network connectivity & service availability
