@@ -9,7 +9,7 @@ describe 'Firewall' do
     it "return a number" do
       a = Firewall.new
       num = a.status
-      num.is_a.should == "number"
+      num.class.should == "Fixnum"
     end
   end
   
