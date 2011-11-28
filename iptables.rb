@@ -10,7 +10,7 @@ module Iptables
       cmd = "iptables -A OUTPUT -p tcp"
       cmd = cmd+" --dport options[:port]" if options[:port]
       cmd = cmd+" - options[:host]" if options[:host]
-      cmd = cmd+" -f DROP"
+      cmd = cmd+" -j DROP"
       puts cmd
     end
     

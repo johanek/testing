@@ -16,8 +16,10 @@ describe 'Firewall' do
   describe '.add' do
     it "create a new rule" do
       a = Firewall.new
-      num = a.status
+      b = a.status
       a.add(:host => "johan.org.uk", :port => "2222")
+      c = a.status
+      c.should > b
     end
   end
   
