@@ -15,8 +15,9 @@ describe 'Firewall' do
   
   describe '.add' do
     it "create a new rule" do
-      num = Iptables.status
-      Iptables.add
+      a = Firewall.new
+      num = a.status
+      a.add(:host => "johan.org.uk", :port => "2222")
     end
   end
   
