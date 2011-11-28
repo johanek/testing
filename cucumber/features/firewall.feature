@@ -9,6 +9,6 @@ Feature: Firewall
 		And I should flush iptables after
 
 	Scenario: Block SSH traffic
-		When I block traffic to port 2222
+		When I block traffic to port 22
 		Then ssh johan.org.uk should fail
 		And I should flush iptables after
