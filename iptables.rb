@@ -2,7 +2,7 @@
 
 module Iptables
   class Firewall
-    def tablestatus
+    def status
       puts 1
     end
     def add
