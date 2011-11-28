@@ -7,8 +7,8 @@ module Iptables
     end
     
     def add(options)
-      cmd = "iptables -A OUTPUT -p tcp"
-      cmd = cmd+" --dport #{options[:port]}" if options[:port]
+      cmd = "iptables -A OUTPUT"
+      cmd = cmd+" -p tcp --dport #{options[:port]}" if options[:port]
       cmd = cmd+" -d #{options[:host]}" if options[:host]
       cmd = cmd+" -j DROP"
       system(cmd)
