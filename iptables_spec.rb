@@ -20,6 +20,7 @@ describe 'Firewall' do
       a.add(:host => "google.com")
       c = a.status
       c.should > b
+      a.flush
     end
   end
   
