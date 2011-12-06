@@ -3,6 +3,7 @@
 require '../iptables/iptables'
 require 'test/unit/assertions'
 require 'socket'
+require 'etc'
 include Iptables
 include Test::Unit::Assertions
 
@@ -33,4 +34,15 @@ Then /^ssh (.*) should fail$/ do |x|
 	s.should be_false
 end
 
+Given /^I am logged in as a user$/ do
+  user = ENV['USER']
+  user.is_a?(String)
+end
 
+Then /^I want to lookup "([^"]*)" in the user table$/ do |arg1|
+  Etc.getpwnam(arg1)
+end
+
+Then /^I want to lookup "([^"]*)" in the group table$/ do |arg1|
+  Etc.getgrnam(arg1)
+end
