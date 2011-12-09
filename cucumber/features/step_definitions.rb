@@ -1,15 +1,19 @@
 #!/usr/bin/env rspec
 
-require '../iptables/iptables'
+require 'rubygems'
+require 'iptables/iptables'
 require 'test/unit/assertions'
 require 'socket'
 require 'etc'
+require 'net/ssh'
 include Iptables
 include Test::Unit::Assertions
 
 When /^I block all traffic to (.*)$/ do |x|
 	a = Firewall.new
 	a.add(:host => x) 
+	b = a.status
+	b.should == 1
 end
 
 Then /^ping (.*) should fail$/ do |x|
@@ -23,9 +27,11 @@ Then /^I should flush iptables after$/ do
 	a.flush
 end
 
-When /^I block traffic to port (\d+)$/ do |x|
+When /^I block all traffic on port (\d+)$/ do |x|
 	a = Firewall.new
 	a.add(:port => x)
+	b = a.status
+	b.should == 1
 end
 
 Then /^ssh (.*) should fail$/ do |x|
@@ -45,4 +51,10 @@ end
 
 Then /^I want to lookup "([^"]*)" in the group table$/ do |arg1|
   Etc.getgrnam(arg1)
+end
+
+Then /^I want to be able to login with the following credentials$/ do |table|
+  table.hashes.each do |hash|
+    Net::SSH.start('localhost', hash[:username], :password => hash[:password], :auth_methods => "Password", :timeout => 2)
+  end
 end
