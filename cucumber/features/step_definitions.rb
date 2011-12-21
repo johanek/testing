@@ -1,7 +1,7 @@
 #!/usr/bin/env rspec
 
 require 'rubygems'
-require 'iptables/iptables'
+require '../iptables/iptables'
 require 'test/unit/assertions'
 require 'socket'
 require 'etc'
