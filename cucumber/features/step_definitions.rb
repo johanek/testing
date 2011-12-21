@@ -11,9 +11,10 @@ include Test::Unit::Assertions
 
 When /^I block all traffic to (.*)$/ do |x|
 	a = Firewall.new
-	a.add(:host => x) 
 	b = a.status
-	b.should == 1
+	a.add(:host => x) 
+	c = a.status
+	c.should > b
 end
 
 Then /^ping (.*) should fail$/ do |x|
@@ -29,9 +30,11 @@ end
 
 When /^I block all traffic on port (\d+)$/ do |x|
 	a = Firewall.new
-	a.add(:port => x)
 	b = a.status
-	b.should == 1
+	a.add(:port => x, :proto => "tcp")
+	a.add(:port => x, :proto => "udp")
+	c = a.status
+	c.should > b
 end
 
 Then /^ssh (.*) should fail$/ do |x|
