@@ -61,3 +61,9 @@ Then /^I want to be able to login with the following credentials$/ do |table|
     Net::SSH.start('localhost', hash[:username], :password => hash[:password], :auth_methods => "Password", :timeout => 2)
   end
 end
+
+Given /^no firewall rules are set$/ do
+  a = Firewall.new
+  b = a.status
+  b.should == 0
+end
